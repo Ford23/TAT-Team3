@@ -11,9 +11,10 @@ public class Hotel{
     private  Long Id; //Primary Key
     private String hotelName;
     private String hotelAdress;
-    private int longitude;
-    private int latitude;
+    private double longitude;
+    private double latitude;
     private String contactNumber;
+    private float roomPrice;
 
     public Hotel(String hotelName,String hotelAdress,int longitude,int latitude)
     {
@@ -55,7 +56,7 @@ public class Hotel{
     //Getters
     public String getHotelName(){return hotelName;}
     public String getHotelAdress(){return hotelAdress;}
-    public int getLongitude(){return longitude;}
-    public int getLatitude(){return latitude;}
+    public double getLongitude(){return longitude;}
+    public double getLatitude(){return latitude;}
     public String getContactNumber(){return contactNumber;}
 }
