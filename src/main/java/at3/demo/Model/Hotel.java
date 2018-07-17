@@ -49,7 +49,7 @@ public class Hotel{
         this.roomPrice = roomPrice;
     }
     //Getters
-    public Long getId() {return Id};
+    public Long getId() {return Id;}
     public String getHotelName(){return hotelName;}
     public String getHotelAdress(){return hotelAdress;}
     public double getLongitude(){return longitude;}
