@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Korisnik</title>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+    <script>
+        $(document).ready(function(){
+            var date_input=$('input[name="date"]'); //our date input has the name "date"
+            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+            var options={
+                format: 'dd/mm/yyyy',
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+            };
+            date_input.datepicker(options);
+        })
+    </script>
+</head>
+<body style="background: url(https://images.designtrends.com/wp-content/uploads/2016/04/11113618/HD-Travel-Wallpaper.png)
+no-repeat center center fixed;
+ background-size: cover;
+  -webkit-background-size:
+   cover; -moz-background-size:
+    cover; -o-background-size: cover;">
+<div class="container" style="margin-left: -5px">
+    <h2>Hotel list</h2>
+    <h4>Hotels</h4>
+
+    <div class="table-responsive">
+        <table class="table table-striped" style="float:left">
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Room Price</td>
+                <td>Address</td>
+                <td>Longitude</td>
+                <td>Latitude</td>
+                <td>Contact Number</td>
+
+            </tr>
+            <!-- <tr th:each ="users : ${userList}">
+                <td th:utext="${users.id}">...</td>
+                <td th:utext="${users.name}">...</td>
+                <td th:utext="${users.roomPrice}">...</td>
+                <td th:utext="${users.address}">...</td>
+                <td th:utext="${users.longitude}">...</td>
+                <td th:utext="${users.latitude}">...</td>
+                <td th:utext="${users.contactNumber}">...</td>-->
+            <!-- <td><button type="button" class="btn btn-link"><a th:href="@{/users/notesEdit/__${users.id}__}">Edit</a></button></td>
+             <td><button type="button" class="btn btn-link"><a th:href="@{/users/userDelete/__${users.id}__}" data-confirm="Are you sure you want to delete?">Delete</a></button></td>
+             <td><a th:href="@{/users/notesEdit/__${users.id}__}">Edit</a> </td>
+             <td> <a th:href="@{/users/userDelete/__${users.id}__}">Delete</a> </td>-->
+
+            </tr>
+        </table>
+        <div class="bootstrap-iso" >
+            <div class="container-fluid">
+                <div class="row" style="padding-right: 400px; margin-left: -30px">
+                    <div class="col-md-6 col-sm-6 col-xs-12" style="padding-right: 130px" >
+                        <div class="form-group" align="left" > <!-- Date input -->
+                            <label class="control-label" for="date">From:</label>
+                            <input class="form-control" id="datefrom" name="date" placeholder="DD/MM/YYYY" type="text"/>
+                        </div>
+                        <div class="form-group"  align="left"> <!-- Date input -->
+                            <label class="control-label" for="dateT">To:</label>
+                            <input class="form-control"  align="right" id="dateto" name="date" placeholder="DD/MM/YYYY" type="text" />
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" align="left"> <!-- Submit button -->
+        <button class="btn btn-primary " name="submit"  type="submit">Submit</button>
+    </div>
+</div>
+</body>
+</html>
