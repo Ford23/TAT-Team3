@@ -16,6 +16,8 @@ public class Hotel{
     private String contactNumber;
     private float roomPrice;
 
+    public Hotel(){};
+
     public Hotel(String hotelName,String hotelAdress,double longitude,double latitude,float roomPrice)
     {
         this.hotelName=hotelName;
@@ -30,22 +32,22 @@ public class Hotel{
         this.Id = id;
     }
 
-    protected void setHotelName(String hotelName){
+    public void setHotelName(String hotelName){
         this.hotelName = hotelName;
     }
-    protected void setHotelAdress(String hotelAdress){
+    public void setHotelAdress(String hotelAdress){
         this.hotelAdress = hotelAdress;
     }
-    protected void setlongitude(double longitude){
+    public void setlongitude(double longitude){
         this.longitude= longitude;
     }
-    protected void setLatitude(double latitude){
+    public void setLatitude(double latitude){
         this.latitude = latitude;
     }
-    protected void setContactNumber(String contactNumber){
+    public void setContactNumber(String contactNumber){
         this.contactNumber = contactNumber;
     }
-    protected void setRoomPrice(float roomPrice){
+    public void setRoomPrice(float roomPrice){
         this.roomPrice = roomPrice;
     }
     //Getters
