@@ -1,0 +1,23 @@
+*{color: #ffffff;}
+/*.bg {*/
+    /*background-image: url("background.jpg");*/
+    /*repeat : no-repeat;*/
+    /*height: 100%;*/
+    /*width: auto;*/
+.form-container{border: 1px solid #ffffff;padding: 60px 70px; margin-top: 20vh;
+    -webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+    box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+}
+.background {
+    background: url("background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;}
+
+
+
+
+
+

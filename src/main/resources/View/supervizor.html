@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>super</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+    <script>
+
+        map.on('load', function () {
+            // Add a layer showing the places.
+            map.addLayer({
+                "id": "places",
+                "type": "symbol",
+                "source": {
+                    "type": "geojson",
+                    "data": {
+                        "type": "FeatureCollection",
+                        "features": [{
+                            "type": "Feature",
+                            "properties": {
+                                "description": "<strong>Make it Mount Pleasant</strong><p><a href=\"http://www.mtpleasantdc.com/makeitmtpleasant\" target=\"_blank\" title=\"Opens in a new window\">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>",
+                                "icon": "theatre"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [-77.038659, 38.931567]
+                            }
+                        }, {
+                            "type": "Feature",
+                            "properties": {
+                                "description": "<strong>Mad Men Season Five Finale Watch Party</strong><p>Head to Lounge 201 (201 Massachusetts Avenue NE) Sunday for a <a href=\"http://madmens5finale.eventbrite.com/\" target=\"_blank\" title=\"Opens in a new window\">Mad Men Season Five Finale Watch Party</a>, complete with 60s costume contest, Mad Men trivia, and retro food and drink. 8:00-11:00 p.m. $10 general admission, $20 admission and two hour open bar.</p>",
+                                "icon": "theatre"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [-77.003168, 38.894651]
+                            }
+                        }, {
+                            "type": "Feature",
+                            "properties": {
+                                "description": "<strong>Big Backyard Beach Bash and Wine Fest</strong><p>EatBar (2761 Washington Boulevard Arlington VA) is throwing a <a href=\"http://tallulaeatbar.ticketleap.com/2012beachblanket/\" target=\"_blank\" title=\"Opens in a new window\">Big Backyard Beach Bash and Wine Fest</a> on Saturday, serving up conch fritters, fish tacos and crab sliders, and Red Apron hot dogs. 12:00-3:00 p.m. $25.grill hot dogs.</p>",
+                                "icon": "bar"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [-77.090372, 38.881189]
+                            }
+                        }, {
+                            "type": "Feature",
+                            "properties": {
+                                "description": "<strong>Ballston Arts & Crafts Market</strong><p>The <a href=\"http://ballstonarts-craftsmarket.blogspot.com/\" target=\"_blank\" title=\"Opens in a new window\">Ballston Arts & Crafts Market</a> sets up shop next to the Ballston metro this Saturday for the first of five dates this summer. Nearly 35 artists and crafters will be on hand selling their wares. 10:00-4:00 p.m.</p>",
+                                "icon": "art-gallery"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [-77.111561, 38.882342]
+                            }
+                        }, {
+                            "type": "Feature",
+                            "properties": {
+                                "description": "<strong>Seersucker Bike Ride and Social</strong><p>Feeling dandy? Get fancy, grab your bike, and take part in this year's <a href=\"http://dandiesandquaintrelles.com/2012/04/the-seersucker-social-is-set-for-june-9th-save-the-date-and-start-planning-your-look/\" target=\"_blank\" title=\"Opens in a new window\">Seersucker Social</a> bike ride from Dandies and Quaintrelles. After the ride enjoy a lawn party at Hillwood with jazz, cocktails, paper hat-making, and more. 11:00-7:00 p.m.</p>",
+                                "icon": "bicycle"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [-77.052477, 38.943951]
+                            }
+                        }, {
+                            "type": "Feature",
+                            "properties": {
+                                "description": "<strong>Capital Pride Parade</strong><p>The annual <a href=\"http://www.capitalpride.org/parade\" target=\"_blank\" title=\"Opens in a new window\">Capital Pride Parade</a> makes its way through Dupont this Saturday. 4:30 p.m. Free.</p>",
+                                "icon": "star"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [-77.043444, 38.909664]
+                            }
+                        }, {
+                            "type": "Feature",
+                            "properties": {
+                                "description": "<strong>Muhsinah</strong><p>Jazz-influenced hip hop artist <a href=\"http://www.muhsinah.com\" target=\"_blank\" title=\"Opens in a new window\">Muhsinah</a> plays the <a href=\"http://www.blackcatdc.com\">Black Cat</a> (1811 14th Street NW) tonight with <a href=\"http://www.exitclov.com\" target=\"_blank\" title=\"Opens in a new window\">Exit Clov</a> and <a href=\"http://godsilla.bandcamp.com\" target=\"_blank\" title=\"Opens in a new window\">Gods’illa</a>. 9:00 p.m. $12.</p>",
+                                "icon": "music"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [-77.031706, 38.914581]
+                            }
+                        }, {
+                            "type": "Feature",
+                            "properties": {
+                                "description": "<strong>A Little Night Music</strong><p>The Arlington Players' production of Stephen Sondheim's  <a href=\"http://www.thearlingtonplayers.org/drupal-6.20/node/4661/show\" target=\"_blank\" title=\"Opens in a new window\"><em>A Little Night Music</em></a> comes to the Kogod Cradle at The Mead Center for American Theater (1101 6th Street SW) this weekend and next. 8:00 p.m.</p>",
+                                "icon": "music"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [-77.020945, 38.878241]
+                            }
+                        }, {
+                            "type": "Feature",
+                            "properties": {
+                                "description": "<strong>Truckeroo</strong><p><a href=\"http://www.truckeroodc.com/www/\" target=\"_blank\">Truckeroo</a> brings dozens of food trucks, live music, and games to half and M Street SE (across from Navy Yard Metro Station) today from 11:00 a.m. to 11:00 p.m.</p>",
+                                "icon": "music"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [-77.007481, 38.876516]
+                            }
+                        }]
+                    }
+                },
+                "layout": {
+                    "icon-image": "{icon}-15",
+                    "icon-allow-overlap": true
+                }
+            });
+
+            // When a click event occurs on a feature in the places layer, open a popup at the
+            // location of the feature, with description HTML from its properties.
+            map.on('click', 'places', function (e) {
+                var coordinates = e.features[0].geometry.coordinates.slice();
+                var description = e.features[0].properties.description;
+
+                // Ensure that if the map is zoomed out such that multiple
+                // copies of the feature are visible, the popup appears
+                // over the copy being pointed to.
+                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                }
+
+                new mapboxgl.Popup()
+                    .setLngLat(coordinates)
+                    .setHTML(description)
+                    .addTo(map);
+            });
+
+            // Change the cursor to a pointer when the mouse is over the places layer.
+            map.on('mouseenter', 'places', function () {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            // Change it back to a pointer when it leaves.
+            map.on('mouseleave', 'places', function () {
+                map.getCanvas().style.cursor = '';
+            });
+        });
+
+
+        // San Francisco
+        var origin = [-122.414, 37.776];
+
+        // Washington DC
+        var destination = [-77.032, 38.913];
+
+        // A simple line from origin to destination.
+        var route = {
+            "type": "FeatureCollection",
+            "features": [{
+                "type": "Feature",
+                "geometry": {
+                    "type": "LineString",
+                    "coordinates": [
+                        origin,
+                        destination
+                    ]
+                }
+            }]
+        };
+
+        // A single point that animates along the route.
+        // Coordinates are initially set to origin.
+        var point = {
+            "type": "FeatureCollection",
+            "features": [{
+                "type": "Feature",
+                "properties": {},
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": origin
+                }
+            }]
+        };
+
+        // Calculate the distance in kilometers between route start/end point.
+        var lineDistance = turf.lineDistance(route.features[0], 'kilometers');
+
+        var arc = [];
+
+        // Number of steps to use in the arc and animation, more steps means
+        // a smoother arc and animation, but too many steps will result in a
+        // low frame rate
+        var steps = 500;
+
+        // Draw an arc between the `origin` & `destination` of the two points
+        for (var i = 0; i < lineDistance; i += lineDistance / steps) {
+            var segment = turf.along(route.features[0], i, 'kilometers');
+            arc.push(segment.geometry.coordinates);
+        }
+
+        // Update the route with calculated arc coordinates
+        route.features[0].geometry.coordinates = arc;
+
+        // Used to increment the value of the point measurement against the route.
+        var counter = 0;
+
+            // Add a source and layer displaying a point which will be animated in a circle.
+            map.addSource('route', {
+                "type": "geojson",
+                "data": route
+            });
+
+            map.addSource('point', {
+                "type": "geojson",
+                "data": point
+            });
+
+            map.addLayer({
+                "id": "route",
+                "source": "route",
+                "type": "line",
+                "paint": {
+                    "line-width": 2,
+                    "line-color": "#007cbf"
+                }
+            });
+
+            map.addLayer({
+                "id": "point",
+                "source": "point",
+                "type": "symbol",
+                "layout": {
+                    "icon-image": "airport-15",
+                    "icon-rotate": ["get", "bearing"],
+                    "icon-rotation-alignment": "map",
+                    "icon-allow-overlap": true
+                }
+            });
+
+            function animate() {
+                // Update point geometry to a new position based on counter denoting
+                // the index to access the arc.
+                point.features[0].geometry.coordinates = route.features[0].geometry.coordinates[counter];
+
+                // Calculate the bearing to ensure the icon is rotated to match the route arc
+                // The bearing is calculate between the current point and the next point, except
+                // at the end of the arc use the previous point and the current point
+                point.features[0].properties.bearing = turf.bearing(
+                    turf.point(route.features[0].geometry.coordinates[counter >= steps ? counter - 1 : counter]),
+                    turf.point(route.features[0].geometry.coordinates[counter >= steps ? counter : counter + 1])
+                );
+
+                // Update the source with this new data.
+                map.getSource('point').setData(point);
+
+                // Request the next frame of animation so long the end has not been reached.
+                if (counter < steps) {
+                    requestAnimationFrame(animate);
+                }
+
+                counter = counter + 1;
+            }
+
+            document.getElementById('replay').addEventListener('click', function() {
+                // Set the coordinates of the original point back to origin
+                point.features[0].geometry.coordinates = origin;
+
+                // Update the source layer
+                map.getSource('point').setData(point);
+
+                // Reset the counter
+                counter = 0;
+
+                // Restart the animation.
+                animate(counter);
+            });
+
+            // Start the animation.
+            animate(counter);
+        });
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            bottom: 0;
+            width: 100%;
+        }
+        .mapboxgl-popup {
+            max-width: 400px;
+            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        }
+    </style>
+<script>
+    mapboxgl.accessToken =
+        "pk.eyJ1IjoiZW5ha2FwZXRhbm92aWMiLCJhIjoiY2pqb2VhbzNmMzM5ODNybXhqaHpwaXE5ZSJ9.xpRCEzBjPw0g4JTaJ-NWZw" ;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v10',
+        center: [18.4131,43.8563], //sarajevo
+        zoom: 1
+    });
+    }),
+
+    function getRoute() {
+        var start = [18.4128671, 43.8568503];
+        var end = [18.4307913, 43.8594828];
+        var directionsRequest = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + start[0] + ',' + start[1] + ';' + end[0] + ',' + end[1] + '?geometries=geojson&access_token=' + mapboxgl.accessToken;
+        $.ajax({
+            method: 'GET',
+            url: directionsRequest,
+        }).done(function(data) {
+            var route = data.routes[0].geometry;
+            map.addLayer({
+                id: 'route',
+                type: 'line',
+                source: {
+                    type: 'geojson',
+                    data: {
+                        type: 'Feature',
+                        geometry: route
+                    }
+                },
+                paint: {
+                    'line-width': 2
+                }
+            });
+
+        });
+    }
+</script>
+</html>
+
+<div id='map'></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZW5ha2FwZXRhbm92aWMiLCJhIjoiY2pqb2VhbzNmMzM5ODNybXhqaHpwaXE5ZSJ9.xpRCEzBjPw0g4JTaJ-NWZw';
+
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: [-77.04, 38.907],
+        zoom: 11.15
+    });
+
+
+</script>
+
+</body>
+</html>
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+
+<body>
+
+<style>
+    .overlay {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+
+    .overlay button {
+        font:600 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        background-color: #3386c0;
+        color: #fff;
+        display: inline-block;
+        margin: 0;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .overlay button:hover {
+        background-color:#4ea0da;
+    }
+</style>
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js' charset='utf-8'></script>
+
+<div class='overlay'>
+    <button id='replay'>Replay</button>
+</div>
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZW5ha2FwZXRhbm92aWMiLCJhIjoiY2pqb2VhbzNmMzM5ODNybXhqaHpwaXE5ZSJ9.xpRCEzBjPw0g4JTaJ-NWZw';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: [-96, 37.8],
+        zoom: 1
+    });
+</script>
+
+</body>
+</html>
