@@ -15,8 +15,8 @@ public class Reservation
     @Id
     @GeneratedValue
     private Long Id;//Primary Key
-    private Date reservedFrom;
-    private Date reservedTo;
+    public Date reservedFrom;
+    public Date reservedTo;
 
     @ManyToOne(fetch=FetchType.LAZY,optional=false)
     @JoinColumn(name="hotel_id",nullable=false)
