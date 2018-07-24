@@ -1,4 +1,4 @@
-package at3.demo.Model;
+package com.at3.demo.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,17 +11,21 @@ public class ReservationUser
 {
     @Id
     @GeneratedValue
-    private Long Id; //Primary Key
-    private String firstName;
-    private String lastName;
-    private Date birthDate;
-    private String uniqueNumber;
-    private String phoneNumber;
-    private String adress;
-    private double longitude;
-    private double latitude;
+    public Long Id; //Primary Key
+    public String firstName;
+    public String lastName;
+    public Date birthDate;
+    public String uniqueNumber;
+    public String phoneNumber;
+    public String adress;
+    public double longitude;
+    public double latitude;
 
-    public ReservationUser(String firstName,String lastName,Date birthDate,String uniqueNumber,String phoneNumber,String adress)
+    public ReservationUser()
+    {
+    }
+
+    public ReservationUser(String firstName, String lastName, Date birthDate, String uniqueNumber, String phoneNumber, String adress)
     {
         this.firstName=firstName;
         this.lastName=lastName;

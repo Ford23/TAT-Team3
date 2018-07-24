@@ -1,14 +1,14 @@
-package at3.demo.Model;
+package com.at3.demo.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Hotel{
+public class Hotel {
     @Id
     @GeneratedValue
-    private  Long Id; //Primary Key
+    private Long Id; //Primary Key
     private String hotelName;
     private String hotelAdress;
     private double longitude;
@@ -16,8 +16,14 @@ public class Hotel{
     private String contactNumber;
     private float roomPrice;
 
-    public Hotel(){};
+    public Hotel(String hotelName, double longitude, double latitude) {
+        this.hotelName = hotelName;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
 
+    public Hotel()
+    { }
     public Hotel(String hotelName,String hotelAdress,double longitude,double latitude,float roomPrice)
     {
         this.hotelName=hotelName;

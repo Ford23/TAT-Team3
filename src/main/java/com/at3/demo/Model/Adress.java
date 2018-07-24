@@ -1,4 +1,4 @@
-package at3.demo.Model;
+package com.at3.demo.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

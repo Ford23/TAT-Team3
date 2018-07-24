@@ -40,7 +40,7 @@ no-repeat center center fixed;
 <div class="container" style="margin-left: -5px">
     <h2>Hotel list</h2>
     <h4>Hotels</h4>
-
+<form action="/reservations/addReservation" method="post">
     <div class="table-responsive">
         <table class="table table-striped" style="float:left">
             <tr>
@@ -53,18 +53,20 @@ no-repeat center center fixed;
                 <td>Contact Number</td>
 
             </tr>
-            <!-- <tr th:each ="users : ${userList}">
-                <td th:utext="${users.id}">...</td>
-                <td th:utext="${users.name}">...</td>
+            <tr th:each ="users : ${hotelsList}">
+                <td th:utext="${users.Id} ">...</td>
+                <td th:utext="${users.hotelName}">...</td>
                 <td th:utext="${users.roomPrice}">...</td>
-                <td th:utext="${users.address}">...</td>
+                <td th:utext="${users.hotelAdress}">...</td>
                 <td th:utext="${users.longitude}">...</td>
                 <td th:utext="${users.latitude}">...</td>
-                <td th:utext="${users.contactNumber}">...</td>-->
-            <!-- <td><button type="button" class="btn btn-link"><a th:href="@{/users/notesEdit/__${users.id}__}">Edit</a></button></td>
-             <td><button type="button" class="btn btn-link"><a th:href="@{/users/userDelete/__${users.id}__}" data-confirm="Are you sure you want to delete?">Delete</a></button></td>
-             <td><a th:href="@{/users/notesEdit/__${users.id}__}">Edit</a> </td>
-             <td> <a th:href="@{/users/userDelete/__${users.id}__}">Delete</a> </td>-->
+                <td th:utext="${users.contactNumber}">...</td>
+                <td> <input style="display:none" name="id" th:value="${users.Id}"></input>
+                    <input class="btn button" type="submit" value="Reservation"></input></td>
+                <!-- <td><button type="" class="btn btn-link"><a th:href="@{/users/notesEdit/__${users.id}__}">Edit</a></button></td>
+                    <td><button type="button" class="btn btn-link"><a th:href="@{/users/userDelete/__${users.id}__}" data-confirm="Are you sure you want to delete?">Delete</a></button></td>
+                    <td><a th:href="@{/users/notesEdit/__${users.id}__}">Edit</a> </td>
+                    <td> <a th:href="@{/users/userDelete/__${users.id}__}">Delete</a> </td>-->
 
             </tr>
         </table>
@@ -73,12 +75,12 @@ no-repeat center center fixed;
                 <div class="row" style="padding-right: 400px; margin-left: -30px">
                     <div class="col-md-6 col-sm-6 col-xs-12" style="padding-right: 130px" >
                         <div class="form-group" align="left" > <!-- Date input -->
-                            <label class="control-label" for="date">From:</label>
-                            <input class="form-control" id="datefrom" name="date" placeholder="DD/MM/YYYY" type="text"/>
+                            <label class="control-label" for="dateFrom">From:</label>
+                            <input class="form-control" id="dateFrom" name="dateFrom" placeholder="DD/MM/YYYY" type="text"/>
                         </div>
                         <div class="form-group"  align="left"> <!-- Date input -->
-                            <label class="control-label" for="dateT">To:</label>
-                            <input class="form-control"  align="right" id="dateto" name="date" placeholder="DD/MM/YYYY" type="text" />
+                            <label class="control-label" for="dateToo">To:</label>
+                            <input class="form-control"  align="right" id="dateToo" name="dateToo" placeholder="DD/MM/YYYY" type="text" />
                         </div>
 
 
@@ -91,6 +93,7 @@ no-repeat center center fixed;
     <div class="form-group" align="left"> <!-- Submit button -->
         <button class="btn btn-primary " name="submit"  type="submit">Submit</button>
     </div>
+</form>
 </div>
 </body>
 </html>

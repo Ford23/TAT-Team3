@@ -1,7 +1,7 @@
-package at3.demo.Controller;
+package com.at3.demo.Controller;
 
-import at3.demo.Model.ReservationUser;
-import at3.demo.Repository.ReservationUserRepository;
+import com.at3.demo.Model.ReservationUser;
+import com.at3.demo.Repository.ReservationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +35,7 @@ public class ReservationUserController {
     @RequestMapping(value = "/delete/{user_id}", method = RequestMethod.DELETE)
     public String removeById(Long Id){
         users.deleteById(Id);
-        return "/user/delete/id";
+        return "adminPanel";
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.PUT)

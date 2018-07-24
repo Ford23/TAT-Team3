@@ -1,6 +1,6 @@
-package at3.demo.Repository;
+package com.at3.demo.Repository;
 
-import at3.demo.Model.Adress;
+import com.at3.demo.Model.Adress;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

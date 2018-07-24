@@ -1,4 +1,4 @@
-package at3.demo;
+package com.at3.demo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

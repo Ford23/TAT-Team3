@@ -1,4 +1,4 @@
-package at3.demo.Model;
+package com.at3.demo.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
@@ -30,7 +30,10 @@ public class Reservation
     @JsonIgnore
     private ReservationUser user;
 
-    public Reservation(Date reservedFrom,Date reservedTo)
+    public Reservation() {
+    }
+
+    public Reservation(Date reservedFrom, Date reservedTo)
     {
         this.reservedFrom=reservedFrom;
         this.reservedTo=reservedTo;
@@ -56,5 +59,19 @@ public class Reservation
     protected Date getReservedFrom(){return  reservedFrom;}
     protected Date getReservedTo(){return  reservedTo;}
 
+    public Hotel getHotel() {
+        return hotel;
+    }
 
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    public ReservationUser getUser() {
+        return user;
+    }
+
+    public void setUser(ReservationUser user) {
+        this.user = user;
+    }
 }
