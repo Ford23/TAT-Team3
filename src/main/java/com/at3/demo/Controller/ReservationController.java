@@ -52,7 +52,7 @@ public class ReservationController {
     public String addReservation(@RequestParam (value = "id") Long hotelId){
         Reservation reservation = new Reservation();
         reservation.setId(hotelId);
-        ReservationUser user= new ReservationUser("Korisnik","Korisnik", 15.1555, 40.2222);
+        ReservationUser user= new ReservationUser("Korisinik", 15.1555, 40.2222);
 
         reservations.save(reservation);
         return "adminPanel";

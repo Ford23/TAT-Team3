@@ -17,6 +17,7 @@ background-size: cover; -webkit-background-size: cover;
 -moz-background-size: cover; -o-background-size: cover;">
 <div class="container" style="margin-left: -10px;margin-right: 50px">
     <p style="font-family: Arial; font-style: normal;font-size: xx-large; color: black">Hotels</p>
+
     <table class="table table-hover" >
         <tr>
             <td>Id</td>
@@ -28,41 +29,37 @@ background-size: cover; -webkit-background-size: cover;
             <td>Contact Number</td>
 
         </tr>
-        <tr th:each ="users : ${hotelsList}">
-            <td th:utext="${users.Id} ">...</td>
-            <td th:utext="${users.hotelName}">...</td>
-            <td th:utext="${users.roomPrice}">...</td>
-            <td th:utext="${users.hotelAdress}">...</td>
-            <td th:utext="${users.longitude}">...</td>
-            <td th:utext="${users.latitude}">...</td>
-            <td th:utext="${users.contactNumber}">...</td>
+        <tr th:each ="hotels : ${hotelsList}">
+            <td th:utext="${hotels.Id} ">...</td>
+            <td th:utext="${hotels.hotelName}">...</td>
+            <td th:utext="${hotels.roomPrice}">...</td>
+            <td th:utext="${hotels.hotelAdress}">...</td>
+            <td th:utext="${hotels.longitude}">...</td>
+            <td th:utext="${hotels.latitude}">...</td>
+            <td th:utext="${hotels.contactNumber}">...</td>
+            <td><button type="button" class="btn btn-link"><a th:href="@{'/hotels/updateHotel/'+${hotels.Id}}">Edit</a></button></td>
+           
+           <!-- <td><button type="button" class="btn btn-link"><a th:href="@{/hotels/deleteHotel/__${hotels.id}__}" data-confirm="Are you sure you want to delete?">Delete</a></button></td>-->
         </tr>
     </table>
     <p style="font-family: Arial; font-style: normal;font-size: xx-large; color: black">Users</p>
     <table class="table table-hover" >
         <tr>
             <td>Id</td>
-            <td>First Name</td>
-            <td>Last Name</td>
-            <td>Birth Date</td>
-            <td>Unique Number</td>
-            <td>Phone Number</td>
-            <td>Address</td>
+            <td>Username</td>
             <td>Longitude</td>
             <td>Latitude</td>
         </tr>
         <tr th:each="user : ${userList}">
             <td th:utext="${user.Id}">...</td>
-            <td th:utext="${user.firstName}">...</td>
-            <td th:utext="${user.lastName}">...</td>
-            <td th:utext="${user.birthDate}">...</td>
-            <td th:utext="${user.uniqueNumber}">...</td>
-        <td th:utext="${user.phoneNumber}">...</td>
-        <td th:utext="${user.adress}">...</td>
+            <td th:utext="${user.userName}">...</td>
+            <td th:utext="${user.longitude}">...</td>
         <td th:utext="${user.longitude}">...</td>
-
+            <td><button type="button" class="btn btn-link"><a th:href="@{'/hotels/updateUser/'+${user.Id}}">Edit</a></button></td>
+            <td><button type="button" class="btn btn-link"><a th:href="@{'/hotels/deleteUser/'+${user.Id}}">Delete</a></button></td>
         </tr>
     </table>
+
 </div>
 </body>
 </html>

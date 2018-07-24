@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Hotel</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container" style="margin-left: -10px;margin-right: 50px">
+<div class="table-responsive">
+    <form th:action="@{'/hotels/updateHotel/' + ${Id}}" method="post" th:object="${hotel}">
+
+        <input type="hidden" name="Id" th:field="*{Id}" th:value="${hotel.getId()}" />
+        <div class="form-group">
+            <label for="hotelName">Hotel name</label>
+            <input th:required="required" type="text" th:field="*{hotelName}" name="hotelName" id="hotelName" class="form-control" th:value="${hotel.hotelName}" placeholder="Hotel Name"></nput>
+
+        </div>
+    <div class="form-group">
+        <label for="hotelAdress">Hotel address</label>
+        <input th:required="required" type="text" name="hotelAdress" th:field="*{hotelAdress}" id="hotelAdress" class="form-control" th:value="${hotel.hotelAdress}" placeholder="Hotel Address"></nput>
+
+    </div>
+        <div class="form-group">
+            <label for="longitude">Longitude</label>
+            <input th:required="required" type="text" name="longitude"  th:field="*{longitude}" id="longitude" class="form-control" th:value="${hotel.longitude}" placeholder="Longitude"></nput>
+        </div>
+        <div class="form-group">
+            <label for="latitude">latitude</label>
+            <input th:required="required" type="text" name="latitude" id="latitude" th:field="*{latitude}" class="form-control" th:value="${hotel.latitude}" placeholder="Latitude"></nput>
+        </div>
+
+        <div class="form-group">
+            <label for="contactNumber">contactNumber</label>
+            <input th:required="required" type="text" name="contactNumber" id="contactNumber" th:field="*{contactNumber}" class="form-control" th:value="${hotel.contactNumber}" placeholder="contactNumber"></nput>
+        </div>
+        <div class="form-group">
+            <label for="roomPrice">roomPrice</label>
+            <input th:required="required" type="text" name="roomPrice" id="roomPrice" th:field="*{roomPrice}" class="form-control" th:value="${hotel.roomPrice}" placeholder="roomPrice"></nput>
+        </div>
+
+        <input type="submit" name="submit-edit-room" class="btn button" id="add" value="Update Hotel"></input>
+
+
+    </form>
+</div>
+</div>
+</body>
+</html>

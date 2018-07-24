@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class HotelController {
    @Autowired
    ReservationUserRepository users;
 
-    
+
     public HotelController (HotelRepository hotelRepository, ReservationUserRepository userRepository){
         this.hotels = hotelRepository;
         this.users = userRepository;
@@ -46,42 +47,64 @@ public class HotelController {
     }
 
 
-    @RequestMapping(value = "/{hotel_id}", method = RequestMethod.GET)
-    public String getHotelById(@PathVariable Long Id, ModelMap model) {
-        model.put("hotelId", hotels.findById(Id));
+    @RequestMapping(value = "/updateHotel/{Id}", method = RequestMethod.POST)
+    public String updateHotel(@PathVariable("Id") long Id, @ModelAttribute("hotel") Hotel hotel)
+    {
 
-        return "hotel/id";
-    }
+        Hotel newHotel=hotels.findById(Id).get();
 
-    @RequestMapping(value = "/addHotel", method = RequestMethod.POST)
-    @ModelAttribute ("hotel")
-    public String addHotel(Hotel hotel, ModelMap modelMap){
-        hotels.save(hotel);
-        return "adminPanel";
-    }
-    @RequestMapping(path = "/addHotelNew", method = RequestMethod.POST)
-    public String addNewHotel(Model model, Hotel hotel) {
-        model.addAttribute("hotelDetail", new Hotel());
-        hotels.save(new Hotel(hotel.getHotelName(), hotel.getLongitude(), hotel.getLatitude()));
-        model.addAttribute("hotelsList",hotels.findAll());
-        return "userPanel";
-    }
-    @RequestMapping(path = "/addHotel", method = RequestMethod.GET)
-    public String createProduct(Model model) {
-        model.addAttribute("addHotel", new Hotel());
-        return "userPanel";
-    }
+        if(newHotel!=null){
 
-    @RequestMapping(value = "/delete/{hotel_id}", method = RequestMethod.DELETE)
-    public String removeById(Long Id){
-        hotels.deleteById(Id);
-        return "adminPanel";
-    }
+            newHotel.setHotelName(hotel.getHotelName());
+            newHotel.setHotelAdress(hotel.getHotelAdress());
+            newHotel.setContactNumber(hotel.getContactNumber());
+            newHotel.setLatitude(hotel.getLatitude());
+            newHotel.setlongitude(hotel.getLongitude());
+            newHotel.setRoomPrice(hotel.getRoomPrice());
 
-    @RequestMapping(value = "/edit", method = RequestMethod.PUT)
-    public String updateHotel(Long Id, ModelMap model){
-        model.put("hotel", hotels.findById(Id));
-        return "adminPanel";
-    }
+            hotels.save(newHotel);
+        }
 
+        return "redirect:/hotels/admin";
+    }
+    @RequestMapping(value = "/updateUser/{Id}", method = RequestMethod.GET)
+    public String updateUser(@PathVariable("Id") long Id, Model model)
+    {
+        model.addAttribute("user",users.getOne(Id));
+
+        return "editUsers";
+    }
+    @RequestMapping(value = "/updateUser/{Id}", method = RequestMethod.POST)
+    public String updateUser(@PathVariable("Id") long Id, @ModelAttribute("user") ReservationUser user)
+    {
+
+        ReservationUser newUser=users.findById(Id).get();
+
+        if(newUser!=null){
+
+            newUser.setUserName(user.getUserName());
+            newUser.setLatitude(user.getLatitude());
+            newUser.setLongitude(user.getLongitude());
+
+
+            users.save(newUser);
+
+        }
+
+        return "redirect:/hotels/admin";
+    }
+    @RequestMapping(value = "/updateHotel/{Id}", method = RequestMethod.GET)
+    public String updateHotel(@PathVariable("Id") long Id, Model model)
+    {
+        model.addAttribute("hotel",hotels.getOne(Id));
+
+        return "editHotel";
+    }
+    @RequestMapping(value = "/deleteUser/{Id}", method = RequestMethod.POST)
+    public String deleteUser(@RequestParam(value = "Id") Long Id) {
+        ReservationUser newUser=users.findById(Id).get();
+        users.delete(newUser);
+
+        return "redirect:/hotels/admin";
+    }
 }

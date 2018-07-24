@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Hotel</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container" style="margin-left: -10px;margin-right: 50px">
+    <div class="table-responsive">
+        <form th:action="@{'/hotels/updateUser/' + ${Id}}" method="post" th:object="${user}">
+
+            <input type="hidden" name="Id" th:field="*{Id}" th:value="${user.getId()}" />
+            <div class="form-group">
+                <label for="userName">Username</label>
+                <input th:required="required" type="text" th:field="*{userName}" name="userName" id="userName" class="form-control" th:value="${user.userName}" placeholder="Username"></nput>
+
+            </div>
+
+            <div class="form-group">
+                <label for="longitude">Longitude</label>
+                <input th:required="required" type="text" name="longitude"  th:field="*{longitude}" id="longitude" class="form-control" th:value="${user.longitude}" placeholder="Longitude"></nput>
+            </div>
+            <div class="form-group">
+                <label for="latitude">latitude</label>
+                <input th:required="required" type="text" name="latitude" id="latitude" th:field="*{latitude}" class="form-control" th:value="${user.latitude}" placeholder="Latitude"></nput>
+            </div>
+
+
+
+            <input type="submit" name="submit-edit-room" class="btn button" id="add" value="Update User"></input>
+
+
+        </form>
+    </div>
+</div>
+</body>
+</html>
