@@ -10,7 +10,7 @@
     box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
 }
 .background {
-    background: url("background.jpg") no-repeat center center fixed;
+
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

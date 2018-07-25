@@ -13,20 +13,24 @@ public class ReservationUser
     @GeneratedValue
     public Long Id; //Primary Key
     public String userName;
-    public double longitude;
-    public double latitude;
+    public Double longitude;
+    public Double latitude;
 
     public ReservationUser()
     {
-    }
 
-    public ReservationUser(String userName, double longitude, double latitude){
+    }
+    public ReservationUser(Long Id)
+    {
+        this.Id=Id;
+    }
+    public ReservationUser(String userName, Double longitude, Double latitude){
 
         this.userName=userName;
         this.longitude=longitude;
         this.latitude=latitude;
     }
-    public ReservationUser(Long Id,String userName, double longitude, double latitude){
+    public ReservationUser(Long Id,String userName, Double longitude, Double latitude){
         this.Id=Id;
         this.userName=userName;
         this.longitude=longitude;
@@ -53,7 +57,7 @@ public class ReservationUser
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
@@ -61,7 +65,7 @@ public class ReservationUser
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 }

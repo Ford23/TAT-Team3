@@ -40,7 +40,7 @@ no-repeat center center fixed;
 <div class="container" style="margin-left: -5px">
     <h2>Hotel list</h2>
     <h4>Hotels</h4>
-<form action="/reservations/addReservation" method="post">
+<form action="/reservations/reservationHotel" method="post">
     <div class="table-responsive">
         <table class="table table-striped" style="float:left">
             <tr>
@@ -70,13 +70,14 @@ no-repeat center center fixed;
 
             </tr>
         </table>
+
         <div class="bootstrap-iso" >
             <div class="container-fluid">
                 <div class="row" style="padding-right: 400px; margin-left: -30px">
                     <div class="col-md-6 col-sm-6 col-xs-12" style="padding-right: 130px" >
                         <div class="form-group" align="left" > <!-- Date input -->
                             <label class="control-label" for="dateFrom">From:</label>
-                            <input class="form-control" id="dateFrom" name="dateFrom" placeholder="DD/MM/YYYY" type="text"/>
+                            <input class="form-control" id="dateFrom" name="dateFrom" placeholder="DD/MM/YYYY" type="text"  />
                         </div>
                         <div class="form-group"  align="left"> <!-- Date input -->
                             <label class="control-label" for="dateToo">To:</label>
@@ -90,9 +91,7 @@ no-repeat center center fixed;
             </div>
         </div>
     </div>
-    <div class="form-group" align="left"> <!-- Submit button -->
-        <button class="btn btn-primary " name="submit"  type="submit">Submit</button>
-    </div>
+
 </form>
 </div>
 </body>

@@ -1,46 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml" >
 <head>
     <title>Login form</title>
     <meta charset="utf-8">
-    <meta name ="viewport" content="width=device-widht, initial-scaled">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="background.css" type="text/css" rel="stylesheet">
+  <meta name ="viewport" content="width=device-width, initial-scaled">
+    <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        function validate() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            if (username == "user" && password == "user") {
+                alert("Login successful");
+                window.location = "userPanel"; // Redirecting to other page.
+                return false;
+            } else if (username == "admin" && password == "admin") {
+                alert("Login successful");
+
+
+                return false;
+            } else if (username == "supervisor" && password == "supervisor") {
+                alert("Login successful");
+                window.location = "supervizor"; // Redirecting to other page.
+                return false;
+            }
+        }
+
+    </script>
 
             </head>
 
-<body background="background.jpg" class="background" >
-<div class="container-fluid bg" style="z-index: +1">
+<body style="background: url(https://secure.parksandresorts.wdpromedia.com/resize/mwImage/1/1200/600/90/secure.parksandresorts.wdpromedia.com/media/abd/refresh/north-america/san-francisco-tours/adventures-by-disney-north-america-san-francisco-long-weekend-hero-01-golden-gate-bridge.jpg) no-repeat center center fixed;
+background-size: cover; -webkit-background-size: cover;
+-moz-background-size: cover; -o-background-size: cover;">
+<div class="container-fluid bg" style="z-index: +1; padding-left: 300px" >
 
 <div class="row" style="padding-left: 30%; padding-right: 30%;">
 
     <div class="col-md-4 col-sm-4 col-xs-12"> </div>
         <div class="col-md-4 col-sm-4 col-xs-12"></div>
 
-    <form class="form-container">
+    <form class="form-container" th:action="@{/login}" method="post" style="width: 320px;
+   height: 420px ;
+   webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+   -moz-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+   box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+   margin-top: 150px;
+   box-sizing:border-box;
+   padding:70px 30px;">
                 <h1>Login Form</h1>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    <label for="Username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                 </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox"> Remember me
-                    </label>
-                </div>
-                <button type="submit" class="btn btn-success btn-block">Log in</button>
+
+                <button type="submit" class="btn button" >Log in</button>
             </form>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
         </div>
 </div>
+
 </body>
 </html>
 

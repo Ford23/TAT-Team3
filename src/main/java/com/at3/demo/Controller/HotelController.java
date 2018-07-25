@@ -1,14 +1,17 @@
 package com.at3.demo.Controller;
 
 import com.at3.demo.Model.Hotel;
+import com.at3.demo.Model.Reservation;
 import com.at3.demo.Model.ReservationUser;
 import com.at3.demo.Repository.HotelRepository;
 import com.at3.demo.Repository.ReservationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -67,13 +70,15 @@ public class HotelController {
 
         return "redirect:/hotels/admin";
     }
-    @RequestMapping(value = "/updateUser/{Id}", method = RequestMethod.GET)
-    public String updateUser(@PathVariable("Id") long Id, Model model)
+    @RequestMapping(value = "/updateHotel/{Id}", method = RequestMethod.GET)
+    public String updateHotel(@PathVariable("Id") long Id, Model model)
     {
-        model.addAttribute("user",users.getOne(Id));
+        model.addAttribute("hotel",hotels.getOne(Id));
 
-        return "editUsers";
+        return "editHotel";
     }
+
+
     @RequestMapping(value = "/updateUser/{Id}", method = RequestMethod.POST)
     public String updateUser(@PathVariable("Id") long Id, @ModelAttribute("user") ReservationUser user)
     {
@@ -93,18 +98,54 @@ public class HotelController {
 
         return "redirect:/hotels/admin";
     }
-    @RequestMapping(value = "/updateHotel/{Id}", method = RequestMethod.GET)
-    public String updateHotel(@PathVariable("Id") long Id, Model model)
+    @RequestMapping(value = "/updateUser/{Id}", method = RequestMethod.GET)
+    public String updateUser(@PathVariable("Id") Long Id, Model model)
     {
-        model.addAttribute("hotel",hotels.getOne(Id));
+        model.addAttribute("user",users.getOne(Id));
 
-        return "editHotel";
+        return "editUsers";
     }
-    @RequestMapping(value = "/deleteUser/{Id}", method = RequestMethod.POST)
-    public String deleteUser(@RequestParam(value = "Id") Long Id) {
-        ReservationUser newUser=users.findById(Id).get();
-        users.delete(newUser);
+    @RequestMapping(value = "/deleteUser/{Id}", method = RequestMethod.GET)
+    public String deleteUser(@PathVariable("Id") Long Id) {
+
+        users.deleteById(Id);
 
         return "redirect:/hotels/admin";
+    }
+    @RequestMapping(value = "/deleteHotel/{Id}", method = RequestMethod.GET)
+    public String deleteHotel(@PathVariable("Id") Long Id)  {
+
+        hotels.deleteById(Id);
+
+        return "redirect:/hotels/admin";
+    }
+    @RequestMapping(value = "/supervisor", method = RequestMethod.GET)
+    public String getMap()  {
+
+
+
+        return "supervizor";
+    }
+    @RequestMapping(value = "/default", method = RequestMethod.GET)
+    public String redirectToPanel(Model model, Authentication authentication) {
+        if (authentication.getAuthorities().toString().contains("ROLE_ADMIN")) {
+            System.out.println("==== ADMIN");
+            return "redirect:/hotels/admin";
+        }
+        else if (authentication.getAuthorities().toString().contains("ROLE_USER")) {
+            System.out.println("==== USER");
+            return "redirect:/hotels/all";
+        } else if (authentication.getAuthorities().toString().contains("ROLE_SUPERVISOR")) {
+            System.out.println("==== SUPERVISOR");
+            return "redirect:/supervisor";
+        }
+
+        System.out.println("==== ROLE FAILED");
+        return "/login";
+    }
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String showLoginView() {
+
+        return "auth/login";
     }
 }

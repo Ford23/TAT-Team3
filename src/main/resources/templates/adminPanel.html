@@ -38,8 +38,7 @@ background-size: cover; -webkit-background-size: cover;
             <td th:utext="${hotels.latitude}">...</td>
             <td th:utext="${hotels.contactNumber}">...</td>
             <td><button type="button" class="btn btn-link"><a th:href="@{'/hotels/updateHotel/'+${hotels.Id}}">Edit</a></button></td>
-           
-           <!-- <td><button type="button" class="btn btn-link"><a th:href="@{/hotels/deleteHotel/__${hotels.id}__}" data-confirm="Are you sure you want to delete?">Delete</a></button></td>-->
+            <td><button type="button" class="btn btn-link"><a th:href="@{'/hotels/deleteHotel/'+${hotels.Id}}">Delete</a></button></td>
         </tr>
     </table>
     <p style="font-family: Arial; font-style: normal;font-size: xx-large; color: black">Users</p>

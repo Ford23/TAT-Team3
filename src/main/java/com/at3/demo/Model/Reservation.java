@@ -33,10 +33,14 @@ public class Reservation
     public Reservation() {
     }
 
-    public Reservation(Date reservedFrom, Date reservedTo)
+    public Reservation(Long Id,Date reservedFrom, Date reservedTo, Hotel IdHotela, ReservationUser IdUser)
     {
+
+        this.Id=Id;
         this.reservedFrom=reservedFrom;
         this.reservedTo=reservedTo;
+        this.hotel.Id= IdHotela.Id;
+        this.user.Id=IdUser.Id;
     }
 
     public Long getId() {
