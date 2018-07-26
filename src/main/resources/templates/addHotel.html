@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Hotel</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container" style="margin-left: -10px;margin-right: 50px">
+    <div class="table-responsive">
+        <form th:action="@{save}" method="post" th:object="${hotel}">
+            <input type="hidden" name="Id" th:field="*{Id}" />
+            <div class="form-group">
+                <label for="hotelName">Hotel name</label>
+                <input th:required="required" type="text" th:field="*{hotelName}" name="hotelName" id="hotelName" class="form-control" placeholder="Hotel Name"></input>
+            </div>
+            <div class="form-group">
+                <label for="hotelAdress">Hotel address</label>
+                <input th:required="required" type="text" name="hotelAdress" th:field="*{hotelAdress}" id="hotelAdress" class="form-control" placeholder="Hotel Address"></input>
+            </div>
+            <div class="form-group">
+                <label for="longitude">Longitude</label>
+                <input th:required="required" type="double" name="longitude"  th:field="*{longitude}" id="longitude" class="form-control" placeholder="Longitude"></input>
+            </div>
+            <div class="form-group">
+                <label for="latitude">Latitude</label>
+                <input th:required="required" type="double" name="latitude" id="latitude" th:field="*{latitude}" class="form-control" placeholder="Latitude"></input>
+            </div>
+            <div class="form-group">
+                <label for="contactNumber">contactNumber</label>
+                <input th:required="required" type="text" name="contactNumber" id="contactNumber" th:field="*{contactNumber}" class="form-control" placeholder="contactNumber"></input>
+            </div>
+            <div class="form-group">
+                <label for="roomPrice">roomPrice</label>
+                <input th:required="required" type="text" name="roomPrice" id="roomPrice" th:field="*{roomPrice}" class="form-control" placeholder="roomPrice"></input>
+            </div>
+            <input type="submit" name="submit" class="btn button" value="save"></input>
+        </form>
+    </div>
+</div>
+</body>
+</html>

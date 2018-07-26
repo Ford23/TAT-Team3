@@ -40,7 +40,7 @@ no-repeat center center fixed;
 <div class="container" style="margin-left: -5px">
     <h2>Hotel list</h2>
     <h4>Hotels</h4>
-<form action="/reservations/reservationHotel" method="post">
+<form th:action="@{savereservation}" method="post" >
     <div class="table-responsive">
         <table class="table table-striped" style="float:left">
             <tr>
@@ -53,16 +53,17 @@ no-repeat center center fixed;
                 <td>Contact Number</td>
 
             </tr>
-            <tr th:each ="users : ${hotelsList}">
-                <td th:utext="${users.Id} ">...</td>
-                <td th:utext="${users.hotelName}">...</td>
-                <td th:utext="${users.roomPrice}">...</td>
-                <td th:utext="${users.hotelAdress}">...</td>
-                <td th:utext="${users.longitude}">...</td>
-                <td th:utext="${users.latitude}">...</td>
-                <td th:utext="${users.contactNumber}">...</td>
-                <td> <input style="display:none" name="id" th:value="${users.Id}"></input>
-                    <input class="btn button" type="submit" value="Reservation"></input></td>
+            <tr th:each ="hotels : ${hotelsList}">
+                <td th:utext="${hotels.Id} ">...</td>
+                <td th:utext="${hotels.hotelName}">...</td>
+                <td th:utext="${hotels.roomPrice}">...</td>
+                <td th:utext="${hotels.hotelAdress}">...</td>
+                <td th:utext="${hotels.longitude}">...</td>
+                <td th:utext="${hotels.latitude}">...</td>
+                <td th:utext="${hotels.contactNumber}">...</td>
+                <td>
+                    <input style="display:none" name="reservation" th:value="${hotels.Id}"></input>
+                    <input class="btn button" type="button" onclick="Reserve()" value="Reservation"></input></td>
                 <!-- <td><button type="" class="btn btn-link"><a th:href="@{/users/notesEdit/__${users.id}__}">Edit</a></button></td>
                     <td><button type="button" class="btn btn-link"><a th:href="@{/users/userDelete/__${users.id}__}" data-confirm="Are you sure you want to delete?">Delete</a></button></td>
                     <td><a th:href="@{/users/notesEdit/__${users.id}__}">Edit</a> </td>
@@ -71,15 +72,15 @@ no-repeat center center fixed;
             </tr>
         </table>
 
-        <div class="bootstrap-iso" >
+        <!--<div class="bootstrap-iso" >
             <div class="container-fluid">
                 <div class="row" style="padding-right: 400px; margin-left: -30px">
                     <div class="col-md-6 col-sm-6 col-xs-12" style="padding-right: 130px" >
-                        <div class="form-group" align="left" > <!-- Date input -->
+                        <div class="form-group" align="left" > <!-- Date input
                             <label class="control-label" for="dateFrom">From:</label>
                             <input class="form-control" id="dateFrom" name="dateFrom" placeholder="DD/MM/YYYY" type="text"  />
                         </div>
-                        <div class="form-group"  align="left"> <!-- Date input -->
+                        <div class="form-group"  align="left"> <!-- Date input
                             <label class="control-label" for="dateToo">To:</label>
                             <input class="form-control"  align="right" id="dateToo" name="dateToo" placeholder="DD/MM/YYYY" type="text" />
                         </div>
@@ -89,10 +90,15 @@ no-repeat center center fixed;
 
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 
 </form>
 </div>
+<script>
+    function Reserve()
+    {}
+
+</script>
 </body>
 </html>

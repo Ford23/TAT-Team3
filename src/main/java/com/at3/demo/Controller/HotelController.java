@@ -4,6 +4,7 @@ import com.at3.demo.Model.Hotel;
 import com.at3.demo.Model.Reservation;
 import com.at3.demo.Model.ReservationUser;
 import com.at3.demo.Repository.HotelRepository;
+import com.at3.demo.Repository.ReservationRepository;
 import com.at3.demo.Repository.ReservationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -25,11 +27,13 @@ public class HotelController {
    HotelRepository hotels;
    @Autowired
    ReservationUserRepository users;
+   @Autowired
+    ReservationRepository reservations;
 
-
-    public HotelController (HotelRepository hotelRepository, ReservationUserRepository userRepository){
+    public HotelController (HotelRepository hotelRepository, ReservationUserRepository userRepository, ReservationRepository reservations){
         this.hotels = hotelRepository;
         this.users = userRepository;
+        this.reservations = reservations;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/all")
@@ -37,6 +41,7 @@ public class HotelController {
         List<Hotel> hotel =  this.hotels.findAll();
 
         model.addAttribute("hotelsList", hotel);
+        model.addAttribute("reservation", new Reservation());
 
         return "userPanel";
     }
@@ -70,12 +75,27 @@ public class HotelController {
 
         return "redirect:/hotels/admin";
     }
+
     @RequestMapping(value = "/updateHotel/{Id}", method = RequestMethod.GET)
     public String updateHotel(@PathVariable("Id") long Id, Model model)
     {
         model.addAttribute("hotel",hotels.getOne(Id));
 
         return "editHotel";
+    }
+
+    @RequestMapping(value="/addHotel")
+    public String addHotel(Model model){
+        model.addAttribute("hotel",new Hotel());
+
+        return "addHotel";
+    }
+
+    @RequestMapping(value="save", method = RequestMethod.POST)
+    public String addNew(Hotel hotel){
+        hotels.save(hotel);
+
+        return "redirect:/hotels/admin";
     }
 
 
@@ -98,12 +118,43 @@ public class HotelController {
 
         return "redirect:/hotels/admin";
     }
+
     @RequestMapping(value = "/updateUser/{Id}", method = RequestMethod.GET)
     public String updateUser(@PathVariable("Id") Long Id, Model model)
     {
         model.addAttribute("user",users.getOne(Id));
 
         return "editUsers";
+    }
+
+    @RequestMapping(value="/addNewUser")
+    public String addUser(Model model){
+        model.addAttribute("user",new ReservationUser());
+
+        return "addUser";
+    }
+
+    @RequestMapping(value="savereservation", method = RequestMethod.POST)
+    public String addNewReservation(@RequestParam(value="Id") Long Id)
+
+    {
+        Reservation newReservation= new Reservation();
+        Hotel newHotel = new Hotel();
+        newHotel = hotels.getOne(Id);
+        ReservationUser newUser = new ReservationUser();
+        newUser = users.getOne((long)2);
+        newReservation.setUser(newUser);
+        newReservation.setHotel(newHotel);
+        reservations.save(newReservation);
+
+        return "redirect:/userPanel";
+    }
+
+    @RequestMapping(value="saveuser", method = RequestMethod.POST)
+    public String addNewUser(ReservationUser user){
+        users.save(user);
+
+        return "redirect:/hotels/admin";
     }
     @RequestMapping(value = "/deleteUser/{Id}", method = RequestMethod.GET)
     public String deleteUser(@PathVariable("Id") Long Id) {
